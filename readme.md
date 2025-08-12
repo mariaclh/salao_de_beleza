@@ -23,8 +23,8 @@ O projeto é organizado na seguinte estrutura principal, com rotas (URLs) bem de
       * **Profissionais (`profissionais/`)**:
           * `profissionais/cadastrar/`: Formulário para cadastro de profissionais do salão.
       * **Serviços (`servicos/`)**:
-          * `servicos/criar/`: Cadastro dos tipos de serviços oferecidos pelo salão.
-          * `servicos/associar/`: Associa um profissional a um tipo de serviço (Manicure, Corte de Cabelo, Pedicure, Design de Sobrancelhas, etc.), definindo o valor cobrado por ele.
+          * `servicos/criar/`: Cadastro dos tipos de serviços oferecidos pelo salão (Manicure, Corte de Cabelo, Pedicure, Design de Sobrancelhas, etc.).
+          * `servicos/associar/`: Associa um profissional a um tipo de serviço, definindo o valor cobrado por ele.
       * **Agendamentos (`agendamentos/`)**:
           * `agendamentos/criar/`: Cria um novo agendamento para um cliente com um profissional.
           * `agendamentos/gerenciar/`: Permite a alteração do status de um agendamento (agendado, concluído, cancelado).
