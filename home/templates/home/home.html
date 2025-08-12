@@ -1,0 +1,90 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Salão Duquesa</h2>
+    <p class="text-center lead mb-5">Home</p>
+
+    <!-- Menu de Cartões -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        
+        <!-- Cartão: Cadastrar Clientes -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-primary">
+                <div class="card-body d-flex flex-column text-center">
+                    <h5 class="card-title">Cadastrar Clientes</h5>
+                    <p class="card-text">Adicione novos clientes ao sistema.</p>
+                    <a href="{% url 'cadastrar_cliente' %}" class="btn btn-primary mt-auto">Acessar</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cartão: Cadastrar Profissionais -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-success">
+                <div class="card-body d-flex flex-column text-center">
+                    <h5 class="card-title">Cadastrar Profissionais</h5>
+                    <p class="card-text">Adicione novos profissionais ao sistema.</p>
+                    <a href="{% url 'cadastrar_profissional' %}" class="btn btn-success mt-auto">Acessar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cartão: Cadastrar Agendamentos -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-info">
+                <div class="card-body d-flex flex-column text-center">
+                    <h5 class="card-title">Cadastrar Agendamentos</h5>
+                    <p class="card-text">Crie um novo agendamento de serviço para um cliente.</p>
+                    <a href="{% url 'criar_agendamento' %}" class="btn btn-info text-white mt-auto">Acessar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cartão: Gerenciar Agendamentos -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-warning">
+                <div class="card-body d-flex flex-column text-center">
+                    <h5 class="card-title">Gerenciar Agendamentos</h5>
+                    <p class="card-text">Visualize e altere o status dos agendamentos existentes.</p>
+                    <a href="{% url 'gerenciar_agendamentos' %}" class="btn btn-warning text-dark mt-auto">Acessar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cartão: Gerar Relatórios -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-danger">
+                <div class="card-body d-flex flex-column text-center">
+                    <h5 class="card-title">Gerar Relatórios</h5>
+                    <p class="card-text">Crie relatórios com base nos agendamentos.</p>
+                    <a href="{% url 'gerar_relatorio' %}" class="btn btn-danger mt-auto">Acessar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cartão: Gerenciar Tipos de Serviços -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-secondary">
+                <div class="card-body d-flex flex-column text-center">
+                    <h5 class="card-title">Gerenciar Tipos de Serviços</h5>
+                    <p class="card-text">Defina os tipos de serviços oferecidos.</p>
+                    <a href="{% url 'cadastrar_servico' %}" class="btn btn-secondary mt-auto">Acessar</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cartão: Cadastrar Serviços -->
+        <div class="col">
+            <div class="card h-100 shadow-sm border-success">
+                <div class="card-body d-flex flex-column text-center">
+                    <h5 class="card-title">Cadastrar Serviços</h5>
+                    <p class="card-text">Associe profissionais aos serviços que eles realizam.</p>
+                    <a href="{% url 'criar_profissional_servico' %}" class="btn btn-success mt-auto">Acessar</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

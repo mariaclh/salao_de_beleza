@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 2em;
+}
+
+form {
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input, button {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.errorlist {
+    color: red;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 10px;
+}

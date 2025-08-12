@@ -1,0 +1,19 @@
+# Arquivos de ambiente
+.env
+db.sqlite3
+
+# Diretórios e arquivos do Python
+__pycache__/
+*.pyc
+venv/
+env/
+
+# Uploads e estáticos
+media/
+static_cdn/ # Se você tiver um diretório para arquivos estáticos em produção
+
+# Logs
+*.log
+
+# IDE
+.vscode/

@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Relatório de Agendamentos Concluídos</h2>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Gerar Relatório por Período</h5>
+            <form method="GET" action="{% url 'gerar_relatorio' %}">
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-4">
+                        <label for="data-inicio" class="form-label">Data de Início:</label>
+                        <input type="date" class="form-control" id="data-inicio" name="data_inicio" value="{{ data_inicio|default_if_none:'' }}">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="data-fim" class="form-label">Data de Fim:</label>
+                        <input type="date" class="form-control" id="data-fim" name="data_fim" value="{{ data_fim|default_if_none:'' }}">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary w-100">Gerar Relatório</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if agendamentos_count is not None %}
+    <div class="card border-primary mb-3">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Resultado do Relatório</h4>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Período: {{ data_inicio|default:"Não especificado" }} a {{ data_fim|default:"Não especificado" }}</h5>
+            <p class="card-text fs-4">
+                Total de agendamentos <span class="fw-bold">concluídos</span> no período: <span class="fw-bold">{{ agendamentos_count }}</span>
+            </p>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

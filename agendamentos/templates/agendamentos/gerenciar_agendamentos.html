@@ -1,0 +1,84 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Gerenciar Agendamentos</h2>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Filtrar por Data</h5>
+            <form method="GET" action="{% url 'gerenciar_agendamentos' %}">
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-4">
+                        <label for="data-filtro" class="form-label">Selecione a Data:</label>
+                        <input type="date" class="form-control" id="data-filtro" name="data" value="{{ data_filtrada|date:'Y-m-d' }}">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <h3 class="mt-4">Agendamentos para {{ data_filtrada|date:"d/m/Y" }}</h3>
+    {% if agendamentos %}
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="col-md-3">Cliente</th>
+                <th class="col-md-3">Serviço</th>
+                <th>Valor</th>
+                <th>Horário</th>
+                <th>Status Atual</th>
+                <th class="col-md-2">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for agendamento in agendamentos %}
+            <tr>
+                <td class="col-md-3">{{ agendamento.cliente.nome }}</td>
+                <td class="col-md-3">{{ agendamento.profissional_servico.servico.descricao }} com {{ agendamento.profissional_servico.profissional.nome }}</td>
+                <td>R$ {{ agendamento.profissional_servico.valor }}</td>
+                <td>{{ agendamento.hora_inicio|time:"H:i" }} - {{ agendamento.hora_fim|default:"A definir"|time:"H:i" }}</td>
+                <td>
+                    <span class="badge
+                            {% if agendamento.status == 'agendado' %}bg-primary
+                            {% elif agendamento.status == 'concluido' %}bg-success
+                            {% elif agendamento.status == 'cancelado' %}bg-danger
+                            {% endif %}">
+                        {{ agendamento.get_status_display }}
+                    </span>
+                </td>
+                <td class="col-md-2">
+                    <form method="post" action="{% url 'gerenciar_agendamentos' %}" class="d-flex">
+                        {% csrf_token %}
+                        <input type="hidden" name="agendamento_id" value="{{ agendamento.id }}">
+                        <select name="status" class="form-select form-select-sm me-2">
+                            <option value="agendado" {% if agendamento.status == 'agendado' %}selected{% endif %}>Agendado</option>
+                            <option value="concluido" {% if agendamento.status == 'concluido' %}selected{% endif %}>Concluído</option>
+                            <option value="cancelado" {% if agendamento.status == 'cancelado' %}selected{% endif %}>Cancelado</option>
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">Salvar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-info" role="alert">
+        Nenhum agendamento encontrado para esta data.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
