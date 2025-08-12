@@ -1,6 +1,6 @@
 -----
 
-## Salão de Beleza: Sistema de Gerenciamento de Agendamentos
+## Salão de Beleza (Salão Duquesa👑): Sistema de Gerenciamento de Agendamentos
 
 Este projeto é um sistema de gerenciamento para salões de beleza, desenvolvido com Django. Ele foi projetado para atender às necessidades de negócio de um salão, incluindo o cadastro de clientes, serviços e profissionais, gestão de agendamentos e geração de relatórios de desempenho.
 
